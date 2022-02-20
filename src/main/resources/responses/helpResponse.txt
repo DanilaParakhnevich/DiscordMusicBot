@@ -1,3 +1,9 @@
-Hello , i can help u.
-So if u want to :
-lalala do lalala
+Commands:
+/search (to search song on youtube)
+/p 'num' (where 'num' is number of song from list from command /search)
+/play <youtube link> (if its playlist, all playlist will be added)
+/pause
+/resume
+/skip
+/v 'value' (to set volume)
+/now (to see what song is playing now)

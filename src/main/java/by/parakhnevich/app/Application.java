@@ -9,7 +9,7 @@ public class Application {
     public static JDA jda;
 
     public static void main(String[] args) throws Exception {
-        jda = JDABuilder.createDefault("ODEyMDg0MTA4NjQxNTY2NzIw.YC7mQw.3Gafxbe2EBG2SD7ShbZt2W7BJLQ")
+        jda = JDABuilder.createDefault("ODEyMDg0MTA4NjQxNTY2NzIw.YC7mQw.7ed7bO5KM3rGv9zQh4o1Zvqsab4")
                 .setActivity(Activity.listening("shit"))
                 .addEventListeners(new StandardCommandHandler())
                 .build()

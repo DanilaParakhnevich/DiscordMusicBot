@@ -24,10 +24,14 @@ public class Commands {
         }
     };
 
-    public static Consumer<MessageReceivedEvent> playCommand = messageReceivedEvent -> {
-        musicService.loadAndPlay(messageReceivedEvent.getTextChannel(),
-                messageService.getUrlFromMessage(messageReceivedEvent.getMessage()));
-    };
+    public static Consumer<MessageReceivedEvent> playCommand = messageReceivedEvent -> musicService.loadAndPlay(messageReceivedEvent.getTextChannel(),
+            messageService.getUrlFromMessage(messageReceivedEvent.getMessage()),
+            messageReceivedEvent.getMember());
+
+    public static Consumer<MessageReceivedEvent> playAfterSearch = messageReceivedEvent -> musicService.playAfterSearch(messageReceivedEvent.getTextChannel(),
+            messageService.getUrlFromMessage(messageReceivedEvent.getMessage()),
+            messageReceivedEvent.getMember());
+
 
     public static Consumer<MessageReceivedEvent> skipCommand = messageReceivedEvent -> {
         musicService.skipTrack(messageReceivedEvent.getTextChannel());
@@ -41,6 +45,19 @@ public class Commands {
         musicService.resume(messageReceivedEvent.getTextChannel());
     };
 
+    public static Consumer<MessageReceivedEvent> searchCommand = messageReceivedEvent -> {
+        musicService.search(messageReceivedEvent.getTextChannel(),
+                messageService.getUrlFromMessage(messageReceivedEvent.getMessage()));
+    };
+
+    public static Consumer<MessageReceivedEvent> nowPlaying = messageReceivedEvent -> {
+        musicService.playingNow(messageReceivedEvent.getTextChannel());
+    };
+
+    public static Consumer<MessageReceivedEvent> setVolume = messageReceivedEvent -> {
+        musicService.setVolume(messageReceivedEvent.getTextChannel(),
+                messageService.getUrlFromMessage(messageReceivedEvent.getMessage()));
+    };
 
     private static String readFile (File file) throws InterruptedException {
         try {

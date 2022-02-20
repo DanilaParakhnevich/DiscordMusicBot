@@ -1,6 +1,7 @@
 package by.parakhnevich.handler;
 
 import by.parakhnevich.service.MessageService;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -23,10 +24,19 @@ public class StandardCommandHandler extends ListenerAdapter {
         handlingCommands.put("pause", Commands.pauseCommand);
         handlingCommands.put("resume", Commands.resumeCommand);
         handlingCommands.put("skip", Commands.skipCommand);
+        handlingCommands.put("search", Commands.searchCommand);
+        handlingCommands.put("now", Commands.nowPlaying);
+        handlingCommands.put("p", Commands.playAfterSearch);
+        handlingCommands.put("v", Commands.setVolume);
     }
     @Override
     public void onMessageDelete(@NotNull MessageDeleteEvent event) {
         event.getTextChannel().sendMessage( "Some rat deleted message. Be careful").submit();
+    }
+
+    @Override
+    public void onGuildMemberJoin(@NotNull GuildMemberJoinEvent event) {
+        event.getJDA().getGuilds().get(0).getTextChannels().get(0).sendMessage("Hello , " + event.getMember().getNickname());
     }
 
     @Override
